@@ -1,0 +1,6 @@
+package misc;
+
+public enum GameState {
+	STARTSCREEN, OVERWORLD, TRASHGAME, CRABGAME, BOATGAME,
+	TESTGAME
+}
