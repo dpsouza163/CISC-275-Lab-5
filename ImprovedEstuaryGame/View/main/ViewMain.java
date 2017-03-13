@@ -88,6 +88,10 @@ public class ViewMain extends JPanel {
 	public static final int creditOffset = 30;
 	public static final int initialOffset = 50;
 	
+	//Initializes hashmap for win/lose strings
+		public HashMap w_L_Threshholds = new HashMap();
+		public String key;
+	
 	
 	/**
 	 * Draws all images to the screen
@@ -137,30 +141,43 @@ public class ViewMain extends JPanel {
 		    g.setFont(new Font("TimesRoman", Font.PLAIN, fontSize));
 
 			
+		  //Hashmap for Win or Lose game strings
+		    w_L_Threshholds.put("Boat",Controller.boatGameScoreThreshold);
+		    w_L_Threshholds.put("Crab", Controller.crabGameScoreThreshold);
+		    w_L_Threshholds.put("Trash", Controller.trashGameScoreThreshold);
+		    
+			
 			if (Controller.endScreenCheck && Controller.gameOver) {
 				if (Controller.gameWon){
-					//switch statement?
 					if (Controller.gameState == GameState.BOATGAME) {
-						winGameString(Controller.boatGameScoreThreshold,g,fontSize);
+						key = "Boat";
+						//winGameString(Controller.boatGameScoreThreshold,g,fontSize);
 					}
 					else if (Controller.gameState == GameState.CRABGAME) {
-						winGameString(Controller.crabGameScoreThreshold,g,fontSize);
+						key = "Crab";
+						//winGameString(Controller.crabGameScoreThreshold,g,fontSize);
 					}
 					else if (Controller.gameState == GameState.TRASHGAME) {
-						winGameString(Controller.trashGameScoreThreshold,g,fontSize);
+						key = "Trash";
+						//winGameString(Controller.trashGameScoreThreshold,g,fontSize);
 					}
+					winGameString((int)w_L_Threshholds.get(key),g,fontSize);
 				}
 				else {
-					//switch statement?
 					if (Controller.gameState == GameState.BOATGAME) {
-						loseGameString(Controller.boatGameScoreThreshold,g,fontSize);
+						key = "Boat";
+						//loseGameString(Controller.boatGameScoreThreshold,g,fontSize);
 					}
 					else if (Controller.gameState == GameState.CRABGAME) {
-						loseGameString(Controller.crabGameScoreThreshold,g,fontSize);
+						key = "Crab";
+						//loseGameString(Controller.crabGameScoreThreshold,g,fontSize);
 					}
 					else if (Controller.gameState == GameState.TRASHGAME) {
-						loseGameString(Controller.trashGameScoreThreshold,g,fontSize);
+						key = "Trash";
+						//loseGameString(Controller.trashGameScoreThreshold,g,fontSize);
 					}
+					
+					loseGameString((int)w_L_Threshholds.get(key),g,fontSize);
 					
 					
 				}
